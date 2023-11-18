@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     public string[] playSoundName;  // 재생 중인 효과음 사운드 이름 배열
     public bool playtutorial;
-
+    public bool cookieAfterBGM;
 
     // Start is called before the first frame update
     void Start()
@@ -76,15 +76,25 @@ public class SoundManager : MonoBehaviour
             if (_name == bgmSounds[i].name)
             {
                 audioSourceBGM.clip = bgmSounds[i].clip;
+                if (bgmSounds[i].name.Equals("Ending") && cookieAfterBGM)
+                {
+                    masterMixer.SetFloat("BGM", -40);
+                    StartCoroutine(EndingBGM());
+                }
                 audioSourceBGM.Play();
                 return;
             }
         }
-        //if (audioSourceBGM.clip.name.Equals("Ending"))
-        //{
-        //    masterMixer.SetFloat("BGM", 0);
-        //}
+        
         Debug.Log(_name + "사운드가 SoundManager에 등록되지 않았습니다.");
+    }
+    IEnumerator EndingBGM()
+    {
+        for(int i = -40; i < 0; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            masterMixer.SetFloat("BGM", i);
+        }
     }
     public void StopAllSE() //모든 효과음 재생 중지
     {
