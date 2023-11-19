@@ -11,12 +11,12 @@ public class PlayerAction : MonoBehaviour
     float v;
     bool isHorizonMove;
     Vector3 dirVec;
-    GameObject scanObject; 
+    public GameObject scanObject; 
     
     public bool yourDied;
     public bool flag;
-    public GameObject inputK;
     public GameObject inputH;
+    public GameObject childObject;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -33,7 +33,6 @@ public class PlayerAction : MonoBehaviour
         playerUI = FindObjectOfType<ContainerManager>();
         overM = FindObjectOfType<OverManager>();
         inputH.SetActive(false);
-        inputK.SetActive(false);
     }
 
     // Update is called once per frame
@@ -92,6 +91,9 @@ public class PlayerAction : MonoBehaviour
         }
         else
         {
+            if (playerUI.currentHp <= 0) //체력이 0이 될 시
+                yourDied = true;
+
             //Move
             Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
             rigid.velocity = moveVec * Speed;
@@ -103,16 +105,23 @@ public class PlayerAction : MonoBehaviour
             if (rayHit.collider != null)
             {
                 scanObject = rayHit.collider.gameObject;
-                if (scanObject.name.Equals("Key"))
-                    inputK.SetActive(true);
+                if (scanObject.name.Contains("Key"))
+                {
+                    childObject = scanObject.transform.GetChild(0).gameObject;
+                    childObject.SetActive(true);
+                }
 
                 else if (scanObject.name.Equals("Hint"))
                     inputH.SetActive(true);
             }
             else
             {
+                if (scanObject != null)
+                {
+                    scanObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
                 scanObject = null;
-                inputK.SetActive(false);
+                childObject = null;
                 inputH.SetActive(false);
             }
         }
@@ -155,9 +164,8 @@ public class PlayerAction : MonoBehaviour
     void OnDamaged()    //대미지를 입을 시
     {
         playerUI.DecreaseHp(1);
-        
         if (playerUI.currentHp <= 0) //체력이 0이 될 시
-            yourDied = true;
+        { }
 
         else
         {
