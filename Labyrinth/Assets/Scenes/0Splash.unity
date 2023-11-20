@@ -1044,6 +1044,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 59fb0a0195ac3244eba271046798325a, type: 3}
   - name: Mail
     clip: {fileID: 8300000, guid: 04350908ec72f924e87f1c131e812acd, type: 3}
+  - name: Death
+    clip: {fileID: 8300000, guid: df52a526a81a74647a3a472ce616fee4, type: 3}
+  - name: Correct
+    clip: {fileID: 8300000, guid: 5d9ca77574201614b9ee8ed36b634648, type: 3}
+  - name: Wrong
+    clip: {fileID: 8300000, guid: 5830bc7789407f8488ca7400da8aba9e, type: 3}
+  - name: Light
+    clip: {fileID: 8300000, guid: af285ce99c6deb1479d64a2c3679df6e, type: 3}
+  - name: Noise
+    clip: {fileID: 8300000, guid: ffbe6121da3034348a9675ebd266cdc6, type: 3}
   bgmSounds:
   - name: Title
     clip: {fileID: 8300000, guid: 1c379f111f01e1546856e21ca6fcff36, type: 3}
@@ -1055,6 +1065,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 40b7525b00d180e47a206ea15a773c1b, type: 3}
   - name: Ending
     clip: {fileID: 8300000, guid: 619a19ac7df7ce94695b378ac2c9143a, type: 3}
+  - name: Quiz
+    clip: {fileID: 8300000, guid: af093611071702f419cab1841de7e3d8, type: 3}
   audioSourceBGM: {fileID: 107242494}
   audioSourceEffects:
   - {fileID: 107242493}
