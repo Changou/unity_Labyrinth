@@ -29,7 +29,6 @@ public class WebQManager : MonoBehaviour
         correctPanelText.text = QnA[currentQuestion].CorrectAnswerDescription;
         correctPanel.SetActive(true);
         QnA.RemoveAt(currentQuestion);
-        wrongQuiz.SetActive(true);      //추가
         Invoke("DeactivateCorrectPanel", 5f);
     }
 
@@ -38,6 +37,7 @@ public class WebQManager : MonoBehaviour
         wrongPanelText.text = QnA[currentQuestion].WrongAnswerDescription;
         wrongPanel.SetActive(true);
         QnA.RemoveAt(currentQuestion);
+        wrongQuiz.SetActive(true);      //추가
         Invoke("DeactivateWrongPanel", 5f);
     }
 
