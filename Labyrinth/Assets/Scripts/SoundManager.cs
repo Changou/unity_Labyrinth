@@ -81,6 +81,14 @@ public class SoundManager : MonoBehaviour
                     masterMixer.SetFloat("BGM", -40);
                     StartCoroutine(EndingBGM());
                 }
+                if (bgmSounds[i].name.Equals("Main"))
+                {
+                    masterMixer.SetFloat("BGM", 10);
+                }
+                else
+                {
+                    masterMixer.SetFloat("BGM", 0);
+                }
                 audioSourceBGM.Play();
                 return;
             }

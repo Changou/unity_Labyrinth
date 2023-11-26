@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4Password.unity
     guid: 3856394caab006349af7ce395ee71ca6
+  - enabled: 1
+    path: Assets/Scenes/5Ending.unity
+    guid: a3b633d265834694982bc580240557f1
   m_configObjects: {}
