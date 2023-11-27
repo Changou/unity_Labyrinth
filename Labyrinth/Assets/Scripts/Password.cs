@@ -108,9 +108,17 @@ public class Password : MonoBehaviour
         passwordInput.gameObject.SetActive(false);
         text.SetActive(false);
         resultText.gameObject.SetActive(true);
-
+        string KEY2;
         string password = passwordInput.text;
-        string KEY2 = password.Substring(0, 128 / 8);
+        try
+        {
+            KEY2 = password.Substring(0, 128 / 8);
+        }
+        catch 
+        {
+            password = "wrongwrongwrongwrongwrong";
+            KEY2 = password.Substring(0, 128 / 8);
+        }
         string str2 = AESDecrypt128(str1, KEY2);
 
         if(str2 == null)
