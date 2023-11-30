@@ -62,6 +62,7 @@ public class OverManager : MonoBehaviour
 
     public void Restart()   //재시작
     {
+        SoundManager.instance.StopAllBGM();
         SoundManager.instance.PlaySE("Start");
         StartCoroutine(FadeCoroutineIn());
         hpControl.currentHp = 3;
@@ -73,6 +74,7 @@ public class OverManager : MonoBehaviour
     public void GameOverView()
     {
         StartCoroutine(GameOverViewStart());
+        SoundManager.instance.PlayBGM("Fail");
     }
 
     IEnumerator GameOverViewStart()     //게임오버 뷰 세팅
