@@ -53,11 +53,7 @@ public class OverManager : MonoBehaviour
 
     public void Exit()
     {
-#if UNITY_EDITOR    //빌드시 삭제
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit(); //이것만 남길 것
-#endif
+        Application.Quit(); //이것만 남길 것
     }
 
     public void Restart()   //재시작
